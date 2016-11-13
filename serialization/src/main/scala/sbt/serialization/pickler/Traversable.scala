@@ -27,7 +27,8 @@ trait SeqPicklers {
 }
 
 trait MapPicklers {
-  implicit def mapPickler[A: FastTypeTag, B: FastTypeTag, C >: (A, B)](implicit keyPickler: Pickler[A],
+  implicit def mapPickler[A: FastTypeTag, B: FastTypeTag, C >: (A, B)](implicit
+    keyPickler: Pickler[A],
     keyUnpickler: Unpickler[A],
     valuePickler: Pickler[B],
     valueUnpickler: Unpickler[B],

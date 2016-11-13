@@ -219,7 +219,8 @@ package json {
       FastTypeTag.ArrayLong.key -> ((picklee: Any) => pickleArray(picklee.asInstanceOf[Array[Long]], FastTypeTag.Long)),
       FastTypeTag.ArrayBoolean.key -> ((picklee: Any) => pickleArray(picklee.asInstanceOf[Array[Boolean]], FastTypeTag.Boolean)),
       FastTypeTag.ArrayFloat.key -> ((picklee: Any) => pickleArray(picklee.asInstanceOf[Array[Float]], FastTypeTag.Float)),
-      FastTypeTag.ArrayDouble.key -> ((picklee: Any) => pickleArray(picklee.asInstanceOf[Array[Double]], FastTypeTag.Double)))
+      FastTypeTag.ArrayDouble.key -> ((picklee: Any) => pickleArray(picklee.asInstanceOf[Array[Double]], FastTypeTag.Double))
+    )
     private def pickleArray(arr: Array[_], tag: FastTypeTag[_]) = {
       beginCollection(arr.length)
       pushHints()
@@ -248,8 +249,8 @@ package json {
       FastTypeTag.Byte.key -> ((picklee: Any) => buf.put(picklee.toString)),
       FastTypeTag.Char.key -> ((picklee: Any) => buf.put("\"" + quoteString(picklee.toString) + "\"")),
       FastTypeTag.String.key -> ((picklee: Any) => buf.put("\"" + quoteString(picklee.toString) + "\"")) // Note we've removed all Array knowledge in favor of traeting this NOT as primitive types, but instead
-      // provide a collection pickler for them.
-      )
+    // provide a collection pickler for them.
+    )
 
     override def beginCollection(length: Int): PBuilder = {
       state match {
@@ -585,7 +586,8 @@ package json {
             case x            => unexpectedValue(x, FastTypeTag.Double)
           }
         case x => unexpectedValue(x, FastTypeTag.ArrayDouble)
-      }).toArray))
+      }).toArray)
+    )
 
     private def unexpectedValue(value: JValue, tag: FastTypeTag[_]): Nothing =
       throw new PicklingException("unexpected value: " + value.toString + ", looking for: " + tag)

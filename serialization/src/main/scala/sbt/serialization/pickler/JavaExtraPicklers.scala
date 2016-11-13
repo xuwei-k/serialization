@@ -11,12 +11,14 @@ import scala.pickling.pickler.{ PrimitivePicklers, RefPicklers }
 object JavaExtraPicklers {
   private val fileCanToString: CanToString[File] = CanToString(
     _.toURI.toASCIIString, {
-      s: String => new File(new URI(s))
-    })
+    s: String => new File(new URI(s))
+  }
+  )
   private val uriCanToString: CanToString[URI] = CanToString(
     _.toASCIIString, {
-      s: String => new URI(s)
-    })
+    s: String => new URI(s)
+  }
+  )
 
 }
 

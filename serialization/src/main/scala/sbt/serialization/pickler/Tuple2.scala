@@ -5,7 +5,8 @@ import scala.pickling.{ FastTypeTag, PBuilder, PReader }
 import scala.pickling.pickler.PrimitivePicklers
 
 trait Tuple2Picklers extends PrimitivePicklers with RichTypes {
-  implicit def tuple2Pickler[T1: FastTypeTag, T2: FastTypeTag](implicit elem1Pickler: Pickler[T1],
+  implicit def tuple2Pickler[T1: FastTypeTag, T2: FastTypeTag](implicit
+    elem1Pickler: Pickler[T1],
     elem1Unpickler: Unpickler[T1],
     elem2Pickler: Pickler[T2],
     elem2Unpickler: Unpickler[T2],
