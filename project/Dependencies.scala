@@ -4,8 +4,8 @@ import com.typesafe.sbt.SbtScalariform.ScalariformKeys
 
 object Dependencies {
   // Here are the versions used for the core project
-  val scala210Version = "2.10.4"
-  val scala211Version = "2.11.5"
+  val scala210Version = "2.10.6"
+  val scala211Version = "2.11.8"
 
   val picklingVersion = "0.10.1"
   val pickling210 = "org.scala-lang.modules" % "scala-pickling_2.10" % picklingVersion
@@ -31,8 +31,8 @@ object Dependencies {
   // need to manually set this to override an incompatible old version
   val slf4jLog4j           = "org.slf4j" % "slf4j-log4j12" % "1.6.6"
 
-  val scalaCheckVersion = "1.11.5"
+  val scalaCheckVersion = "1.13.4"
   val junitInterface       = "com.novocode" % "junit-interface" % "0.11"
   val scalaCheck           = "org.scalacheck" %% "scalacheck" % scalaCheckVersion
-  val specs2               = "org.specs2" %% "specs2" % "2.3.11"
+  val specs2               = "org.specs2" %% "specs2" % "3.8.6"
 }

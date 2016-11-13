@@ -18,7 +18,8 @@ cache:
 language: scala
 
 scala:
-  - 2.10.3
+  - 2.10.6
+  - 2.11.8
 jdk:
   - openjdk6
   - openjdk7
@@ -28,7 +29,7 @@ notifications:
     - qbranch@typesafe.com
 
 script:
-  - sbt clean test
+  - sbt ++${TRAVIS_SCALA_VERSION} clean test
 
   # Tricks to avoid unnecessary cache updates
   - find $HOME/.sbt -name "*.lock" | xargs rm
