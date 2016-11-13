@@ -1,6 +1,8 @@
 import Dependencies._
 import com.typesafe.tools.mima.core._, ProblemFilters._
 
+val scalariformCheck = taskKey[Unit]("Checks that the existing code is formatted, via git diff")
+
 lazy val commonSettings = Seq(
   git.baseVersion := "0.1.3",
   scalaVersion := scala210Version,
@@ -15,6 +17,10 @@ lazy val commonSettings = Seq(
   },
   javacOptions in Compile := Seq("-target", "1.6", "-source", "1.6"),
   javacOptions in (Compile, doc) := Seq("-source", "1.6"),
+  scalariformCheck := {
+    val diff = "git diff".!!
+    if (diff.nonEmpty) sys.error("Working directory is dirty!\n" + diff)
+  },
   previousArtifact := None // Some(organization.value %% moduleName.value % "1.0.0")
 )
 

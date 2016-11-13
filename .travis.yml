@@ -28,7 +28,7 @@ notifications:
     - qbranch@typesafe.com
 
 script:
-  - sbt clean test
+  - sbt clean test scalariformCheck
 
   # Tricks to avoid unnecessary cache updates
   - find $HOME/.sbt -name "*.lock" | xargs rm
